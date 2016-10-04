@@ -1,5 +1,6 @@
 package com.example.root.mpchartrealmexample;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,12 +19,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.realm.implementation.RealmBarDataSet;
 import com.github.mikephil.charting.formatter.AxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -104,31 +108,8 @@ public class MainActivity extends AppCompatActivity {
     final android.view.View.OnClickListener graficar = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-            Realm realm = Realm.getDefaultInstance();
-            final RealmResults<Score> results = realm.where(Score.class).findAll();
-
-            AxisValueFormatter formatter = new AxisValueFormatter() {
-                @Override
-                public String getFormattedValue(float value, AxisBase axis) {
-                    return results.get((int) value).getPlayerName();
-                }
-
-                @Override
-                public int getDecimalDigits() { return 0; }
-            };
-
-            RealmBarDataSet<Score> dataSet = new RealmBarDataSet<>(results, "scoreNr", "totalScore");
-
-            ArrayList<IBarDataSet> dataSetList = new ArrayList<>();
-            dataSetList.add(dataSet); // add the dataset
-
-            BarData data = new BarData(dataSetList);
-
-            //barChart.setData(data);
-            //barChart.invalidate();
-
-            Snackbar.make(view, String.valueOf(results.size()), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            fragment.dibujar();
         }
     };
 
@@ -164,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private BarChart barChart;
+
         public PlaceholderFragment() {
         }
 
@@ -183,9 +166,40 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            barChart = (BarChart) rootView.findViewById(R.id.chart1);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }
+
+        public void dibujar(){
+            Realm realm = Realm.getDefaultInstance();
+            final RealmResults<Score> results = realm.where(Score.class).findAll();
+
+            AxisValueFormatter formatter = new AxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    return results.get((int) value).getPlayerName();
+                }
+
+                @Override
+                public int getDecimalDigits() { return 0; }
+            };
+
+            RealmBarDataSet<Score> dataSet = new RealmBarDataSet<>(results, "scoreNr", "totalScore");
+
+            ArrayList<IBarDataSet> dataSetList = new ArrayList<>();
+            dataSetList.add(dataSet); // add the dataset
+
+            BarData data = new BarData(dataSetList);
+
+            //barChart.setData(data);
+            //barChart.invalidate();
+
+            //Context ctx = getActivity().getApplicationContext();
+            Toast toast = Toast.makeText(getActivity().getApplicationContext(), String.valueOf(results.size()) , Toast.LENGTH_LONG);
+            //Snackbar.make(getView(), String.valueOf(results.size()), Snackbar.LENGTH_LONG)
+            //       .setAction("Action", null).show();
         }
     }
 
