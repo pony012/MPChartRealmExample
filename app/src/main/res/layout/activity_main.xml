@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.root.mpchartrealmexample.MainActivity">
-
+    tools:context="com.example.root.mpchartrealmexample.MainActivity"
+    >
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/appbar_padding_top"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,33 +25,23 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
-
-        <!--
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        -->
-
     </android.support.design.widget.AppBarLayout>
-
-
-    <fragment
-        class="layout.GraficoBarra"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_grafico_barra" />
-
-    <!--
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    -->
+        android:layout_height="300dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/BarChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></com.github.mikephil.charting.charts.LineChart
+            >
+    </RelativeLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -66,5 +58,7 @@
             app:srcCompat="@android:drawable/ic_menu_send"
             android:layout_gravity="bottom|left"
             app:backgroundTint="@color/colorAccentIndigo" />
+
     </FrameLayout>
+
 </android.support.design.widget.CoordinatorLayout>

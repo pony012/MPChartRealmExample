@@ -14,19 +14,22 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.realm.implementation.RealmBarDataSet;
+import com.github.mikephil.charting.data.realm.implementation.RealmLineDataSet;
 import com.github.mikephil.charting.formatter.AxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import layout.GraficoBarra;
 
-public class MainActivity extends AppCompatActivity implements GraficoBarra.dibujar {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,34 @@ public class MainActivity extends AppCompatActivity implements GraficoBarra.dibu
     final android.view.View.OnClickListener graficar = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            dibujar();
+            Realm realm = Realm.getDefaultInstance();
+            final RealmResults<Score> results = realm.where(Score.class).findAll();
+
+            AxisValueFormatter formatter = new AxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    return results.get((int) value).getPlayerName();
+                }
+
+                @Override
+                public int getDecimalDigits() {
+                    return 0;
+                }
+            };
+
+            RealmLineDataSet<Score> dataSet = new RealmLineDataSet<>(results, "scoreNr", "totalScore");
+
+            ArrayList<ILineDataSet> dataSetList = new ArrayList<>();
+            dataSetList.add(dataSet); // add the dataset
+
+            LineData data = new LineData(dataSetList);
+
+            LineChart lineChart = (LineChart) findViewById(R.id.BarChart);
+            lineChart.setData(data);
+            lineChart.invalidate();
+
+            Toast toast = Toast.makeText(getApplicationContext(), String.valueOf(results.size()), Toast.LENGTH_LONG);
+            toast.show();
         }
     };
 
@@ -100,42 +130,5 @@ public class MainActivity extends AppCompatActivity implements GraficoBarra.dibu
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void dibujar() {
-        //GraficoBarra gb = (GraficoBarra) getFragmentManager().findFragmentById(R.id.graficoBarraFragment);
-
-        Realm realm = Realm.getDefaultInstance();
-        final RealmResults<Score> results = realm.where(Score.class).findAll();
-
-        AxisValueFormatter formatter = new AxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return results.get((int) value).getPlayerName();
-            }
-
-            @Override
-            public int getDecimalDigits() {
-                return 0;
-            }
-        };
-
-        RealmBarDataSet<Score> dataSet = new RealmBarDataSet<>(results, "scoreNr", "totalScore");
-
-        ArrayList<IBarDataSet> dataSetList = new ArrayList<IBarDataSet>();
-        dataSetList.add(dataSet); // add the dataset
-
-        BarData data = new BarData(dataSetList);
-
-        //barChart.setData(data);
-        //barChart.invalidate();
-
-        //Context ctx = getActivity().getApplicationContext();
-        //Toast toast = Toast.makeText(this.getApplicationContext(), String.valueOf(results.size()), Toast.LENGTH_LONG);
-        //toast.show();
-        //Snackbar.make(getView(), String.valueOf(results.size()), Snackbar.LENGTH_LONG)
-        //       .setAction("Action", null).show();
-
     }
 }
