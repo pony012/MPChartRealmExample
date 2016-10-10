@@ -31,16 +31,25 @@ public class MainActivity extends AppCompatActivity {
 
         Realm.init(this);
 
-        setContentView(R.layout.activity_main);
+        Realm realm = Realm.getDefaultInstance();
+        final RealmResults<UserProfile> results = realm.where(UserProfile.class).findAll();
+        if(results.size()>0){
+            setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(fabOnClick);
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(fabOnClick);
 
-        FloatingActionButton graph = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        graph.setOnClickListener(graficar);
+            FloatingActionButton graph = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+            graph.setOnClickListener(graficar);
+        }else{
+            Intent intent = new Intent(this, Welcome.class);
+            startActivity(intent);
+            //setContentView(R.layout.activity_welcome);
+
+        }
     }
 
     final android.view.View.OnClickListener fabOnClick = new View.OnClickListener() {

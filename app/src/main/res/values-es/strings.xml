@@ -3,4 +3,8 @@
     <string name="app_name">MPChartRealmExample</string>
     <string name="action_settings">Configuraciones</string>
     <string name="Industria">Industria</string>
+    <string name="title_activity_welcome">Bienvenido</string>
+    <string name="dummy_content">Bienvenido\nDesde aquí tendrás la oportunidad de conocer cómo vas con tu empresa.\nPrimero, ingresa tu nombre:</string>
+    <string name="user_name">Nombre</string>
+    <string name="next">Siguiente</string>
 </resources>
