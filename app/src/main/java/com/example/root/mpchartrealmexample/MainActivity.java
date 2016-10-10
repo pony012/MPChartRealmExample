@@ -1,11 +1,9 @@
 package com.example.root.mpchartrealmexample;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,15 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.realm.implementation.RealmBarDataSet;
 import com.github.mikephil.charting.data.realm.implementation.RealmLineDataSet;
 import com.github.mikephil.charting.formatter.AxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
@@ -126,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Toast toast = Toast.makeText(this ,"Settings", Toast.LENGTH_SHORT);
             toast.show();
+            Intent seleccionarArea = new Intent(this, seleccion_area.class);
+            startActivity(seleccionarArea);
             return true;
         }
 
