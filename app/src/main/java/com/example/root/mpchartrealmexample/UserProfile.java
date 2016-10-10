@@ -1,5 +1,8 @@
 package com.example.root.mpchartrealmexample;
 
+import java.util.ArrayList;
+
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
@@ -7,11 +10,11 @@ import io.realm.RealmObject;
  */
 
 public class UserProfile extends RealmObject {
-    int uniqueId;
-    String name;
-    String[] sectors;
+    public int uniqueId;
+    public String name;
+    public RealmList<Sector> sectors;
 
-    UserProfile(){
+    public UserProfile(){
 
     }
 
@@ -31,11 +34,4 @@ public class UserProfile extends RealmObject {
         this.name = name;
     }
 
-    public String[] getSectors() {
-        return sectors;
-    }
-
-    public void setSectors(String[] sectors) {
-        this.sectors = sectors;
-    }
 }

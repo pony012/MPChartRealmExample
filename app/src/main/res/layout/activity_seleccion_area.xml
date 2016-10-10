@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_seleccion_area"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.mpchartrealmexample.seleccion_area">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextIndustria"
+            style="@style/Widget.AppCompat.EditText"
+            android:hint="@string/Industria"
+            android:singleLine="true"
+            android:layout_width="match_parent" />
+
+        <ListView
+            android:id="@+id/listadoIndustrias"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            style="@style/Widget.AppCompat.Light.ListView.DropDown"
+            android:divider="@android:drawable/divider_horizontal_textfield" />
+    </LinearLayout>
+</RelativeLayout>
