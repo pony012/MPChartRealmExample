@@ -134,11 +134,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+      /*  if (id == R.id.action_settings) {
             Toast toast = Toast.makeText(this ,"Settings", Toast.LENGTH_SHORT);
             toast.show();
             Intent seleccionarArea = new Intent(this, seleccion_area.class);
             startActivity(seleccionarArea);
+            return true;
+        }*/
+        if (id == R.id.action_settings) {
+            Toast toast = Toast.makeText(this ,"Settings", Toast.LENGTH_SHORT);
+            toast.show();
+            Intent busqueda = new Intent(this, Search.class);
+            startActivity(busqueda);
             return true;
         }
 

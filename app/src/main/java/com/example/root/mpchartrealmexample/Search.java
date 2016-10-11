@@ -30,7 +30,7 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //final String industries[] = getResources().getStringArray(R.array.Industry_Name);
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
