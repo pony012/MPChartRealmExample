@@ -21,7 +21,9 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.util.ArrayList;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
+import io.realm.exceptions.RealmMigrationNeededException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         Realm.init(this);
 
+//        RealmConfiguration config = new RealmConfiguration.Builder()
+//                .schemaVersion(2) // Must be bumped when the schema changes
+//                .build();
+
+//        Realm realm = Realm.getInstance(config);
         Realm realm = Realm.getDefaultInstance();
         final RealmResults<UserProfile> results = realm.where(UserProfile.class).findAll();
         if(results.size()>0){
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Intent intent = new Intent(this, Welcome.class);
             startActivity(intent);
+            finish();
             //setContentView(R.layout.activity_welcome);
 
         }
