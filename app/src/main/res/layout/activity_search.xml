@@ -11,11 +11,13 @@
 
     <SearchView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/searchTextIndustria" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:layout_weight="0.42" />
+        android:layout_weight="0.42"
+        android:id="@+id/listadoIndustrias" />
 </LinearLayout>
 
