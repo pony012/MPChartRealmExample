@@ -68,34 +68,34 @@
         <item>Bienes Raíces (General/Diversificados</item>
         <item>Bienes Raíces (Operacion &amp; Ser</item>
         <item>Recreacion</item>
-        <item>Reinsurance</item>
-        <item>Restaurant/Dining</item>
-        <item>Retail (Automotive)</item>
-        <item>Retail (Building Supply)</item>
-        <item>Retail (Distributors)</item>
-        <item>Retail (General)</item>
-        <item>Retail (Grocery and Food)</item>
-        <item>Retail (Online)</item>
-        <item>Retail (Special Lines)</item>
-        <item>Rubber&amp; Tires</item>
+        <item>Seguro Alternativo</item>
+        <item>Restaurantes/Cenas</item>
+        <item>Al por Menor (Automoviles)</item>
+        <item>Al por Menor (Materiales de Construccion)</item>
+        <item>Al por Menor (Distribuidores)</item>
+        <item>Al por Menor (General)</item>
+        <item>Al por Menor (Comestibles y Alimentos)</item>
+        <item>Al por Menor (En Linea)</item>
+        <item>Al por Menor (Lineas Especiales)</item>
+        <item>Neumaticos</item>
         <item>Semiconductor</item>
-        <item>Semiconductor Equip</item>
-        <item>Shipbuilding &amp; Marine</item>
-        <item>Shoe</item>
-        <item>Software (Entertainment)</item>
+        <item>Equipo Semiconductor </item>
+        <item>Construccion Naval</item>
+        <item>Zapatos</item>
+        <item>Software (Entretenimiento)</item>
         <item>Software (Internet)</item>
-        <item>Software (System &amp; Applicati</item>
-        <item>Steel</item>
-        <item>Telecom (Wireless)</item>
-        <item>Telecom. Equipment</item>
-        <item>Telecom. Services</item>
-        <item>Tobacco</item>
-        <item>Transportation</item>
-        <item>Transportation (Railroads)</item>
-        <item>Trucking</item>
-        <item>Unclassified</item>
-        <item>Utility (General)</item>
-        <item>Utility (Water)</item>
+        <item>Software (Aplicaciones y Sistemas</item>
+        <item>Acero</item>
+        <item>Telecomunicaciones (Inalambricos)</item>
+        <item>Telecomunicaciones Equipamiento</item>
+        <item>Telecomunicaciones Servicios</item>
+        <item>Tabaco</item>
+        <item>Transporte</item>
+        <item>Transporte (Ferrocarril)</item>
+        <item>Transporte (Camiones de carga)</item>
+        <item>No Clasificado</item>
+        <item>Industriales (General)</item>
+        <item>Industriales (Agua)</item>
     </array>
     <array name="Number_of_firms">
         <item>44</item>
