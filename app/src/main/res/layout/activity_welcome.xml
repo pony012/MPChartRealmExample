@@ -42,7 +42,8 @@
                     android:hint="@string/user_name"
                     android:textColor="@android:color/white"
                     android:maxLines="1"
-                    android:drawableBottom="@color/colorAccent"/>
+                    android:drawableBottom="@color/colorAccent"
+                    android:id="@+id/user_name"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
     </ScrollView>
@@ -64,6 +65,7 @@
             tools:ignore="UselessParent">
 
             <Button
+                android:enabled="false"
                 android:id="@+id/dummy_button"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp"

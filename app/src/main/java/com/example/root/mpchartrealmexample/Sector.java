@@ -1,13 +1,15 @@
 package com.example.root.mpchartrealmexample;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by root on 10/10/16.
  */
 
 public class Sector extends RealmObject {
-    public int id;
+    @PrimaryKey
+    private long id;
     public String name;
     public Sector(){
     }
@@ -17,11 +19,11 @@ public class Sector extends RealmObject {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
