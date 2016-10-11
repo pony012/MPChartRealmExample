@@ -30,8 +30,7 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        search=(SearchView) findViewById(R.id.searchTextIndustria);
-        search.setQueryHint("SearchView");
+
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
