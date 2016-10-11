@@ -10,5 +10,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
+    <string name="app_label">A</string>
+    <string name="search_hint">B</string>
+
     <string name="title_activity_welcome2">Welcome2</string>
 </resources>

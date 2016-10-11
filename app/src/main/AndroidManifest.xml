@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Search"></activity>
+        <activity android:name=".seleccion_area"></activity>
+        <activity android:name=".Welcome"></activity>
+        <activity android:name=".Welcome2"></activity>
     </application>
 
 </manifest>

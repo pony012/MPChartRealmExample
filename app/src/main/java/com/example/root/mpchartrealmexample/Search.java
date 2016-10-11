@@ -63,16 +63,15 @@ public class Search extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 // Auto-generated method stub
 
-                //	Toast.makeText(getBaseContext(), newText,
-                Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), newText, Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_search, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.activity_search, menu);
+//        return true;
+//    }
 }
