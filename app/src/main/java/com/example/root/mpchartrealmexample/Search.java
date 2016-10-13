@@ -1,8 +1,10 @@
 package com.example.root.mpchartrealmexample;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
+import android.widget.SearchView;
+import android.app.SearchManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,15 +24,80 @@ import java.util.HashMap;
 
 public class Search extends AppCompatActivity {
 
-    SearchView search;
-
+    private ListView list;
+    private SearchView search;
+   // private String query;
+    ArrayAdapter<String> adapter;
+    ArrayList araylist;
+    String industries[];
+    EditText edit;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search);
+        search = (SearchView) findViewById(R.id.searchTextIndustria);
+        list = (ListView) findViewById(R.id.listadoIndustrias);
+       // industries = getResources().getStringArray(R.array.Industry_Name);
+        queryIntentnVerify();
 
-        //final String industries[] = getResources().getStringArray(R.array.Industry_Name);
+        edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener())
+
+    }
+
+//---------------------------------------------------------------------------------------------------------------------------
+    // Get the intent, verify the action and get the query
+        public String queryIntentnVerify() {
+            industries = getResources().getStringArray(R.array.Industry_Name);
+            araylist = new ArrayList(Arrays.asList(industries));
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, araylist);
+            list.setAdapter(adapter);
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+        }
+        return query;
+        }
+
+        public void listViewRecive(String query){
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
@@ -66,6 +133,9 @@ public class Search extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    private void doMySearch(String query) {
     }
 
 //    @Override

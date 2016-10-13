@@ -6,6 +6,5 @@
     android:searchSuggestThreshold="2"
     android:includeInGlobalSearch="true"
     android:queryAfterZeroResults="true"
-    android:searchSuggestAuthority="@string/Industria"
-    >
+    android:searchSuggestAuthority="@string/Industria">
 </searchable>
