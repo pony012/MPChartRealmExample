@@ -24,8 +24,8 @@ import java.util.HashMap;
 
 public class Search extends AppCompatActivity {
 
-    private ListView list;
-    private SearchView search;
+     ListView list;
+    SearchView search;
    // private String query;
     ArrayAdapter<String> adapter;
     ArrayList araylist;
@@ -59,24 +59,48 @@ public class Search extends AppCompatActivity {
         });
 
 
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener())
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            public boolean onQueryTextChange(String newText) {
+
+                if (newText.toString().equals("")) {
+                    queryIntentnVerify();
+                }
+                    else {
+                        for(String a:industries){
+                            if(!a.contains(newText.toString())){
+                                araylist.remove(a);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+
+                return false;
+            }
+        });
 
     }
 
 //---------------------------------------------------------------------------------------------------------------------------
     // Get the intent, verify the action and get the query
-        public String queryIntentnVerify() {
+        public void queryIntentnVerify() {
             industries = getResources().getStringArray(R.array.Industry_Name);
             araylist = new ArrayList(Arrays.asList(industries));
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, araylist);
             list.setAdapter(adapter);
 
-        Intent intent = getIntent();
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            query = intent.getStringExtra(SearchManager.QUERY);
-            doMySearch(query);
-        }
-        return query;
+      //  Intent intent = getIntent();
+        //if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+          //  query = intent.getStringExtra(SearchManager.QUERY);
+            //doMySearch(query);
+        //}
+        //return query;
         }
 
         public void listViewRecive(String query){
@@ -97,7 +121,7 @@ public class Search extends AppCompatActivity {
 
 
 
-
+/*
 
         //*** setOnQueryTextFocusChangeListener ***
         search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
@@ -144,3 +168,5 @@ public class Search extends AppCompatActivity {
 //        return true;
 //    }
 }
+
+*///
